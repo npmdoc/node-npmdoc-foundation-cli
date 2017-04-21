@@ -1,0 +1,458 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://foundation.zurb.com"
+
+    >foundation-cli (v2.2.1)</a>
+</h1>
+<h4>Command-line interface for the Foundation family of frameworks.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.foundation-cli">module foundation-cli</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.foundation-cli.blocks">
+            function <span class="apidocSignatureSpan">foundation-cli.</span>blocks
+            <span class="apidocSignatureSpan">(args, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.foundation-cli.build">
+            function <span class="apidocSignatureSpan">foundation-cli.</span>build
+            <span class="apidocSignatureSpan">(args, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.foundation-cli.help">
+            function <span class="apidocSignatureSpan">foundation-cli.</span>help
+            <span class="apidocSignatureSpan">(args, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.foundation-cli.kits">
+            function <span class="apidocSignatureSpan">foundation-cli.</span>kits
+            <span class="apidocSignatureSpan">(args, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.foundation-cli.new">
+            function <span class="apidocSignatureSpan">foundation-cli.</span>new
+            <span class="apidocSignatureSpan">(args, options, callback, ee)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.foundation-cli.update">
+            function <span class="apidocSignatureSpan">foundation-cli.</span>update
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.foundation-cli.watch">
+            function <span class="apidocSignatureSpan">foundation-cli.</span>watch
+            <span class="apidocSignatureSpan">(args, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.foundation-cli" id="apidoc.module.foundation-cli">module foundation-cli</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.foundation-cli.blocks" id="apidoc.element.foundation-cli.blocks">
+        function <span class="apidocSignatureSpan">foundation-cli.</span>blocks
+        <span class="apidocSignatureSpan">(args, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">blocks = function (args, options, callback) {
+  var fn = subcommands[args[0]]
+  if(fn) {
+    fn(args.slice(1), options, callback);
+  } else {
+    help([&#x27;blocks&#x27;]);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.foundation-cli.build" id="apidoc.element.foundation-cli.build">
+        function <span class="apidocSignatureSpan">foundation-cli.</span>build
+        <span class="apidocSignatureSpan">(args, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">build = function (args, options) {
+  // Check if the user is inside a project folder, by looking for a package.json
+  if (!fs.existsSync(path.join(process.cwd(), &#x27;package.json&#x27;))) {
+    console.log(&#x22;\nYou don&#x27;t appear to be in a Foundation project folder.\n\nUse &#x22; + &#x22;pwd&#x22;.cyan + &#x22; (or &#x22; + &#x22;chdir&#x22;.cyan + &#x22; on
+Windows) to see what folder you&#x27;re in.\n&#x22;);
+    process.exit(0);
+  }
+
+  var args = [&#x27;build&#x27;];
+
+  npm.load({ prefix: process.cwd(), loaded: false }, function(err) {
+    npm.commands[&#x27;run-script&#x27;].apply(this, [args]);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.foundation-cli.help" id="apidoc.element.foundation-cli.help">
+        function <span class="apidocSignatureSpan">foundation-cli.</span>help
+        <span class="apidocSignatureSpan">(args, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">help = function (args, options) {
+  var say;
+  if (typeof args === &#x27;undefined&#x27; || args.length === 0) {
+    say = &#x27;default&#x27;
+  } else {
+    say = args[0]
+  }
+  // A line break is added before and after the help text for good measure
+  say = &#x27;\n&#x27; + helpText[say].join(&#x27;\n&#x27;) + &#x27;\n\n&#x27;
+
+  process.stdout.write(say);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (typeof cmd.args[0] === &#x27;undefined&#x27;) {
+// If -v or --version was passed, show the version of the CLI
+if (typeof cmd.opts.version !== &#x27;undefined&#x27;) {
+  process.stdout.write(&#x22;Foundation CLI version &#x22; + require(&#x27;../package.json&#x27;).version + &#x27;\n&#x27;);
+}
+// Otherwise, just show the help screen
+else {
+  foundation.<span class="apidocCodeKeywordSpan">help</span>();
+}
+}
+
+// Arguments given
+else {
+// If the command typed in doesn&#x27;t exist, show the help screen
+if (typeof foundation[cmd.args[0]] == &#x27;undefined&#x27;) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.foundation-cli.kits" id="apidoc.element.foundation-cli.kits">
+        function <span class="apidocSignatureSpan">foundation-cli.</span>kits
+        <span class="apidocSignatureSpan">(args, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">kits = function (args, options, callback) {
+  var fn = subcommands[args[0]]
+  if(fn) {
+    fn(args.slice(1), options, callback);
+  } else {
+    help([&#x27;kits&#x27;]);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.foundation-cli.new" id="apidoc.element.foundation-cli.new">
+        function <span class="apidocSignatureSpan">foundation-cli.</span>new
+        <span class="apidocSignatureSpan">(args, options, callback, ee)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">new = function (args, options, callback, ee) {
+  var projectName, projectFolder, framework, template, messages, directory;
+  var tasks = [
+    preflight, prompt, gitClone, folderSetup, npmInstall, bowerInstall
+  ];
+
+  // Each function below is executed in order
+  async.series(tasks, finish);
+
+  // 1. Check that the process isn&#x27;t root, and that Git is installed
+  function preflight(cb) {
+    if (isRoot()) {
+      console.log(util.mascot(&#x27;sites&#x27;, util.messages.noRoot));
+      process.exit(1);
+    }
+
+    which(&#x27;git&#x27;, function(er) {
+      if (er) {
+        console.log(util.messages.gitNotInstalled);
+        process.exit(69);
+      }
+      cb();
+    });
+  }
+
+  // 2. Find out what the user wants to do
+  function prompt(cb) {
+    inquirer.prompt(util.questions(options), function(answers) {
+      // The variables we need either came from the prompts, or the console arguments
+      projectName = answers.directory || options.directory;
+      framework = answers.framework || options.framework;
+      template = answers.template || options.template || &#x27;unspecified&#x27;;
+      projectFolder = path.join(process.cwd(), projectName);
+      messages = util.messages(projectName,framework,template);
+
+      cb();
+    });
+  }
+
+  // 3. Clone the framework&#x27;s template project
+  function gitClone(cb) {
+    var repo = framework === &#x27;sites&#x27;
+      ? repositories.sites[template]
+      : repositories[framework];
+
+    var cmd = format(&#x27;git clone %s %s&#x27;, repo, projectName);
+    var hello = formatHello(messages.helloYeti, framework);
+
+    console.log(util.mascot(framework, hello));
+    process.stdout.write(messages.downloadingTemplate);
+
+    // [TODO] Change to spawn and check for errors on stderr
+    if (repositories[framework] === undefined) {
+	console.log(&#x22;error!&#x22;.red + &#x22;\nFramework &#x22; + framework.cyan + &#x22; unknown.&#x22;);
+	process.exit(1);
+    }
+
+    exec(cmd, function(err) {
+      if (err instanceof Error) {
+        console.log(messages.gitCloneError);
+        process.exit(1);
+      }
+
+      process.chdir(projectFolder);
+
+      cb();
+    });
+
+    if (typeof(ee) !== &#x27;undefined&#x27;) {
+      ee.emit(&#x22;cloneSuccess&#x22;, projectName);
+    }
+  }
+
+  // 4. Remove the Git folder and change the version number if applicable
+  function folderSetup(cb) {
+    rimraf(&#x27;.git&#x27;, function() {});
+    console.log(messages.installingDependencies);
+    cb();
+
+    // if (options.edge) {
+    //   util.changeVersion(directory, &#x27;foundation-&#x27;+framework, &#x27;master&#x27;, cb);
+    // }
+    // else if (options.version) {
+    //   util.changeVersion(directory, &#x27;foundation-&#x27;+framework, options.version, cb);
+    // }
+    // else {
+    //   cb();
+    // }
+  }
+
+  // 5. Install Node dependencies
+  function npmInstall(cb) {
+    npm.load({ prefix: projectFolder, loglevel: &#x27;error&#x27;, loaded: false }, function(err) {
+      npm.commands.install([], function(err, data) {
+        if (options.debug &#x26;&#x26; err) console.log(err);
+        var success = err === null;
+        if(success &#x26;&#x26; typeof(ee) !== &#x27;undefined&#x27;) ee.emit(&#x22;npmInstallSuccess&#x22;, projectName);
+        else if(typeof(ee) !== &#x27;undefined&#x27;) ee.emit(&#x22;npmInstallFailure&#x22;, projectName);
+        cb(null, success);
+      });
+    });
+  }
+
+  // 6. Install Bower dependencies
+  function bowerInstall(cb) {
+    // Only run &#x22;bower install&#x22; if a bower.json is present
+    if (!fs.existsSync(&#x27;bower.json&#x27;)) {
+      cb(null, true)
+    }
+    else {
+      bower.commands.install(undefined, undefined, {
+        cwd: process.cwd(), silent: true, quiet: true, production: true })
+      .on(&#x27;err&#x27;, function(err) {
+        if (typeof ee !== &#x27;undefined&#x27;)
+          ee.emit(&#x22;bowerInstallFailure&#x22;, projectName);
+        cb(null, false);
+      })
+      .on(&#x27;end&#x27;, function(data) {
+        if (typeof ee !== &#x27;undefined&#x27;)
+          ee.emit(&#x22;bowerInstallSuccess&#x22;, projectName);
+        cb(null, true);
+      });
+    }
+  }
+
+  // 7. Finish the process with a status report
+  function finish(err, results) {
+    // Indexes 4 and 5 of results are the npm/Bower statuses
+    // All the rest should be undefined
+    var allGood = results.indexOf(false) === -1;
+
+    if (allGood)
+      console.log(messages.installSuccess); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.foundation-cli.update" id="apidoc.element.foundation-cli.update">
+        function <span class="apidocSignatureSpan">foundation-cli.</span>update
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">update = function () {
+  var bower = require(&#x27;bower&#x27;);
+
+  bower.commands.update(undefined, undefined, {
+    cwd: process.cwd(), loglevel: &#x27;warn&#x27;, production: true })
+  .on(&#x27;err&#x27;, function(err) {
+    console.log(err);
+  })
+  .on(&#x27;end&#x27;, function(data) {
+    if (!Object.keys(data).length) {
+      console.log(&#x27;\nNothing to update. &#x27;.cyan + &#x27;You\&#x27;re good!\n&#x27;);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+var colors = require(&#x27;colors&#x27;);
+
+module.exports = function() {
+var bower = require(&#x27;bower&#x27;);
+
+bower.commands.<span class="apidocCodeKeywordSpan">update</span>(undefined, undefined, {
+  cwd: process.cwd(), loglevel: &#x27;warn&#x27;, production: true })
+.on(&#x27;err&#x27;, function(err) {
+  console.log(err);
+})
+.on(&#x27;end&#x27;, function(data) {
+  if (!Object.keys(data).length) {
+    console.log(&#x27;\nNothing to update. &#x27;.cyan + &#x27;You\&#x27;re good!\n&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.foundation-cli.watch" id="apidoc.element.foundation-cli.watch">
+        function <span class="apidocSignatureSpan">foundation-cli.</span>watch
+        <span class="apidocSignatureSpan">(args, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">watch = function (args, options) {
+  // Check if the user is inside a project folder, by looking for a package.json
+  if (!fs.existsSync(path.join(process.cwd(), &#x27;package.json&#x27;))) {
+    console.log(&#x22;\nYou don&#x27;t appear to be in a Foundation project folder.\n\nUse &#x22; + &#x22;pwd&#x22;.cyan + &#x22; (or &#x22; + &#x22;chdir&#x22;.cyan + &#x22; on
+Windows) to see what folder you&#x27;re in.\n&#x22;);
+    process.exit(0);
+  }
+
+  npm.load({ prefix: process.cwd(), loaded: false }, function(err) {
+    npm.commands.start.apply(this, []);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
